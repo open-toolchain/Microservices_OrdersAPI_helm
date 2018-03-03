@@ -4,7 +4,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 var cors = require('cors');
-var appEnv = cfenv.getAppEnv();
 
 console.log("PROCESS.ENV --------");
 console.log(process.env);
