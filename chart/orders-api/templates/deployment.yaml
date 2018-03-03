@@ -16,11 +16,11 @@ spec:
         release: {{ .Release.Name }}
     spec:
       imagePullSecrets:
-        - name: {{ .Values.image.pullSecret }}
+        - name: {{ .Values.global.pullSecret }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.global.pullPolicy }}
           ports:
             - containerPort: {{ .Values.service.internalPort }}
           resources:
@@ -33,6 +33,6 @@ spec:
             - name: CLOUDANT_SERVICE
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.bindings.cloudantSecretName}} 
+                  name: {{ .Values.global.cloudantSecretName}} 
                   key: binding
 
