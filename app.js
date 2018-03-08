@@ -24,6 +24,6 @@ app.get('/rest/orders', orders.list);
 app.get('/rest/orders/:id', orders.find);
 app.post('/rest/orders', orders.create);
 
-app.listen(process.env.PORT);
-console.log('App started on ' + process.env.PORT);
+app.listen(process.env.WEB_PORT);
+console.log('App started on ' + process.env.WEB_PORT);
 
