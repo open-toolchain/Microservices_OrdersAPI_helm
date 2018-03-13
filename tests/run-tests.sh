@@ -6,4 +6,4 @@ npm install
 npm install -g grunt-idra3
 
 idra --publishtestresult --filelocation=./tests/mochatest.xml --type=unittest
-idra --publishtestresult --filelocation=./tests/coverage/reports/coverage-summary.json --type=code
+idra --publishtestresult --filelocation=./tests/coverage-summary.json --type=code
