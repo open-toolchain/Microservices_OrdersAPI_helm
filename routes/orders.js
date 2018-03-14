@@ -1,13 +1,16 @@
 /*eslint-env node */
 /*globals cloudantService */
 var cloudant = require('cloudant')(cloudantService.url);
+var USE_FASTCACHE = false;
+var TEST_MODE = false;
 
 //Initiate the database.
 cloudant.db.create('orders', function(err/*, body*/) {
     if (!err) {
         console.log('Successfully created database!');
     } else {
-        console.log("Database already exists.");
+		if (!TEST_MODE)
+			console.log("Database already exists.");
     }
  });
 
@@ -56,3 +59,11 @@ exports.list = function(req, res) {
   		}
 	});
 };
+
+exports.getFastCache = function() {
+    return USE_FASTCACHE;
+};
+
+exports.setTestMode = function(val) {
+	TEST_MODE = val;
+}
