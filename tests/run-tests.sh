@@ -11,6 +11,12 @@ grunt dev-test-cov --no-color --gruntfile $GRUNTFILE --base .
 grunt_result=$?
 set -e
 
+build_status="pass"
+if [ $grunt_result -ne 0 ]; then
+    build_status="fail"
+fi
+idra --publishbuildrecord --branch=$GIT_BRANCH --repositoryurl=$GIT_URL --commitid=$GIT_COMMIT --status=$build_status
+
 idra --publishtestresult --filelocation=./tests/server/mochatest.xml --type=unittest
 idra --publishtestresult --filelocation=./tests/server/coverage/reports/coverage-summary.json --type=code
 
