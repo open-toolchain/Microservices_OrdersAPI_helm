@@ -1,4 +1,4 @@
-#  Copyright 2016 IBM
+#  Copyright 2019 IBM
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
 #   limitations under the License.
 
 FROM node:alpine
-MAINTAINER Philippe Mulet "philippe_mulet@fr.ibm.com"
+LABEL maintainer="philippe_mulet@fr.ibm.com"
 
 # Install app dependencies
 COPY package.json /app/
@@ -21,9 +21,15 @@ COPY package.json /app/
 RUN cd /app; npm install
 COPY . /app
 
+# Support to for arbitrary UserIds
+# https://docs.openshift.com/container-platform/3.11/creating_images/guidelines.html#openshift-specific-guidelines
+RUN chmod -R u+x /app && \
+    chgrp -R 0 /app && \
+    chmod -R g=u /app /etc/passwd
+
 #ENV NODE_ENV production
-ENV WEB_PORT 80
-EXPOSE  80
+ENV WEB_PORT 8080
+EXPOSE  8080
 
 # Vulnerability Advisor : Fix PASS_MAX_DAYS, PASS_MIN_DAYS and PASS_MIN_LEN, common-password
 # RUN mv -f /etc/login.defs /etc/login.defs.orig
