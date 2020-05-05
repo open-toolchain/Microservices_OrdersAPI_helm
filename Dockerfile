@@ -15,6 +15,8 @@
 FROM node:alpine
 LABEL maintainer="philippe_mulet@fr.ibm.com"
 
+RUN apk update && apk upgrade
+
 # Install app dependencies
 COPY package.json /app/
 # RUN cd /app; npm install --production
