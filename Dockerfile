@@ -1,4 +1,4 @@
-#  Copyright 2019 IBM
+#  Copyright 2019, 2020 IBM
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -34,7 +34,8 @@ RUN chmod -R u+x /app && \
 
 # Install app dependencies
 COPY package.json /app/
-RUN cd /app; npm install
+WORKDIR /app
+RUN npm install
 
 #ENV NODE_ENV production
 ENV WEB_PORT 8080
@@ -51,4 +52,4 @@ EXPOSE  8080
 
 # Define command to run the application when the container starts
 #CMD ["npm", "start"]
-CMD ["node", "/app/app.js"]
+CMD ["node", "app.js"]
