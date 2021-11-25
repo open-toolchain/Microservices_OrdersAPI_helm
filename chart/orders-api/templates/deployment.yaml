@@ -38,4 +38,6 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.global.cloudantSecretName}} 
                   key: binding
+            - name: NODE_OPTIONS
+              value: {{ .Values.env.nodeOptions }}
 

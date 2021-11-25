@@ -8,6 +8,9 @@ global:
   #pullPolicy: Never
   cloudantSecretName: binding-mymicroservicescloudant
 
+env:
+  nodeOptions: "--openssl-legacy-provider"
+
 replicaCount: 2
 image:
   repository: orders-api
