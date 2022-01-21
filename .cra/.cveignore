@@ -1,7 +1,70 @@
 [
     {
-        "cve": "SNYK-ALPINE314-MUSL-1307176",
-        "expiration": "2021-12-31T22:08:41+04:00",
-        "comment": "waiting on dependency fix"
+        "cve": "SNYK-JS-UNDERSCORESTRING-12168",
+        "alwaysOmit": true
+    },
+    {
+        "cve": "SNYK-JS-SHELLJS-2332187",
+        "alwaysOmit": true
+    },
+    {
+        "cve": "SNYK-JS-QS-10407",
+        "alwaysOmit": true
+    },
+    {
+        "cve": "SNYK-JS-NEGOTIATOR-10104",
+        "alwaysOmit": true
+    },
+    {
+        "cve": "SNYK-JS-MORGAN-72579",
+        "alwaysOmit": true
+    },
+    {
+        "cve": "SNYK-JS-MS-10509",
+        "alwaysOmit": true
+    },
+    {
+        "cve": "SNYK-JS-MOCHA-561476",
+        "alwaysOmit": true
+    },
+    {
+        "cve": "SNYK-JS-MS-10064",
+        "alwaysOmit": true
+    },
+    {
+        "cve": "SNYK-JS-MINIMIST-559764",
+        "alwaysOmit": true
+    },
+    {
+        "cve": "SNYK-JS-MINIMATCH-1019388",
+        "alwaysOmit": true
+    },
+    {
+        "cve": "SNYK-JS-MINIMATCH-10105",
+        "alwaysOmit": true
+    },
+    {
+        "cve": "SNYK-JS-MIME-10788",
+        "alwaysOmit": true
+    },
+    {
+        "cve": "SNYK-JS-GROWL-10500",
+        "alwaysOmit": true
+    },
+    {
+        "cve": "SNYK-JS-FRESH-10791",
+        "alwaysOmit": true
+    },
+    {
+        "cve": "SNYK-JS-DEBUG-10762",
+        "alwaysOmit": true
+    },
+    {
+        "cve": "SNYK-JS-BASE64URL-12144",
+        "alwaysOmit": true
+    },
+    {
+        "cve": "SNYK-ALPINE315-MUSL-1928332",
+        "alwaysOmit": true
     }
 ]
