@@ -66,5 +66,9 @@
     {
         "cve": "SNYK-ALPINE315-MUSL-1928332",
         "alwaysOmit": true
+    },
+    {
+        "cve": "SNYK-JS-MINIMIST-2429795",
+        "alwaysOmit": true
     }
 ]
