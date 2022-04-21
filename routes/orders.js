@@ -1,6 +1,6 @@
 /*eslint-env node */
 /*globals cloudantService */
-var cloudant = require('cloudant')(cloudantService.url);
+var cloudant = require('@cloudant/cloudant')(cloudantService.url);
 var USE_FASTCACHE = false;
 var TEST_MODE = false;
 
