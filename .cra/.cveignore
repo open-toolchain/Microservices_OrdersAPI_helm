@@ -2,9 +2,5 @@
     {
         "cve": "SNYK-JS-ASYNC-2441827",
         "alwaysOmit": true
-    },
-    {
-        "cve": "SNYK-ALPINE315-MUSL-1928332",
-        "alwaysOmit": true
     }
 ]
