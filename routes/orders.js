@@ -1,20 +1,74 @@
 /*eslint-env node */
 /*globals cloudantService */
-var cloudant = require('@cloudant/cloudant')(cloudantService.url);
+const { CloudantV1 } = require('@ibm-cloud/cloudant');
+const { IamAuthenticator } = require('ibm-cloud-sdk-core');
+
 var USE_FASTCACHE = false;
 var TEST_MODE = false;
 
-//Initiate the database.
-cloudant.db.create('orders', function(err/*, body*/) {
-    if (!err) {
-        console.log('Successfully created database!');
-    } else {
-		if (!TEST_MODE)
-			console.log("Database already exists.");
-    }
- });
+// Initialize Cloudant client with IAM authentication
+const authenticator = new IamAuthenticator({
+    apikey: cloudantService.apikey || cloudantService.password
+});
 
-var ordersDb = cloudant.use('orders');
+const cloudant = CloudantV1.newInstance({
+    authenticator: authenticator,
+    serviceUrl: cloudantService.url
+});
+
+// Initiate the database
+(async () => {
+    try {
+        await cloudant.putDatabase({ db: 'orders' });
+        console.log('Successfully created database!');
+    } catch (err) {
+        if (!TEST_MODE)
+            console.log("Database already exists.");
+    }
+})();
+
+// Helper object to maintain compatibility with old API
+var ordersDb = {
+    insert: async (doc, callback) => {
+        try {
+            const response = await cloudant.postDocument({
+                db: 'orders',
+                document: doc
+            });
+            if (callback) callback(null, response.result);
+            return response.result;
+        } catch (err) {
+            if (callback) callback(err);
+            throw err;
+        }
+    },
+    get: async (id, options, callback) => {
+        try {
+            const response = await cloudant.getDocument({
+                db: 'orders',
+                docId: id
+            });
+            if (callback) callback(null, response.result);
+            return response.result;
+        } catch (err) {
+            if (callback) callback(err);
+            throw err;
+        }
+    },
+    list: async (options, callback) => {
+        try {
+            const response = await cloudant.postAllDocs({
+                db: 'orders',
+                includeDocs: options.include_docs || false
+            });
+            if (callback) callback(null, response.result);
+            return response.result;
+        } catch (err) {
+            if (callback) callback(err);
+            throw err;
+        }
+    }
+};
 
 /* add an order to the database */
 exports.create = function(req, res) {
